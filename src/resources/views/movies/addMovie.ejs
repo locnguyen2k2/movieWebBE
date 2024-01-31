@@ -1,0 +1,116 @@
+<div class="content">
+    <div>
+        <h3>
+            <% if (data.title) {%>
+                <%= data.title %>
+                    <%}%>
+        </h3>
+    </div>
+    <form id="<%= data.content %>" class="form row" method="post" enctype="multipart/form-data"
+        accept="image/png, image/jpeg, image/jpg" action="/add-movie">
+        <!-- Create an user form with bootstrap -->
+        <div class="col">
+            <div class="form-group">
+                <label for="poster">Poster: </label>
+                <input type="file" class="form-control movie-poster w-50" id="poster" name="poster">
+                <span class="form-message"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="movieTitle">Tên phim: </label>
+                <input type="text" class="form-control user-movieTitle" id="movieTitle" name="movieTitle"
+                    placeholder="Vd: The Loki 2">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="director">Đạo diễn: </label>
+                <select name="movieDirector" id="director" class="form-control movie-director">
+                    <option value="">Chọn đạo diễn</option>
+                    <% for(const director of data.directors) {%>
+                        <option value="<%= director.id %>">
+                            <%= director.name %>
+                        </option>
+                        <% } %>
+                </select>
+                <span cla ss="form-message"></span>
+            </div>
+            <div class="form-group list-actor">
+                <div class="title add-actor-movie d-flex justify-content-between">
+                    <label>
+                        Danh sách diễn viên:
+                    </label>
+                    <span class="add-actor-btn secondary-bg-color primart-text-color rounded-2">
+                        <u><i class="fa-solid fa-plus"></i></u></span>
+                </div>
+                <div class="d-flex" id="list-actor-movie">
+                    <div class="form-group position-relative p-1">
+                        <label for="actor"
+                            class="d-flex justify-content-between align-items-center position-relative">Diễn
+                            viên:
+                            <span class="fs-5 delete-actor-quantity d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-delete-left"></i>
+                            </span>
+                        </label>
+                        <image class="form-control actor-image" id="actor" name="actor" src="/images/default/empty.png">
+                            <select name="movieActor" id="actor" class="form-control movie-actor">
+                                <option value="">Chọn diễn viên</option>
+                                <% for(const actor of data.actors) {%>
+                                    <option value="<%= actor.actorID %>">
+                                        <%= actor.name %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                            <span class="form-message"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Mô tả: </label>
+                <input type="text" class="form-control movie-description" id="description" name="movieDisc"
+                    placeholder="Mô tả">
+                <span class="form-message"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm</button>
+        </div>
+    </form>
+</div>
+<script>
+    if (document.querySelector('.list-actor')) {
+        const addActor = document.querySelector('.add-actor-movie');
+        let removeActor = document.querySelectorAll('.delete-actor-quantity');
+        const addActorBtn = addActor.querySelector('.add-actor-btn');
+        const listActor = document.querySelector('.list-actor')
+        const actorItem = `
+                    <div class="form-group position-relative p-1">
+                        <label for="actor"
+                            class="d-flex justify-content-between align-items-center position-relative">Diễn
+                            viên:
+                            <span class="fs-5 delete-actor-quantity d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-delete-left"></i>
+                            </span>
+                        </label>
+                        <img type="image" class="form-control actor-image" id="actor" name="actor"
+                            src="/images/default/empty.png">
+                        <select name="movieActor" id="actor" class="form-control movie-actor">
+                            <option value="">Chọn diễn viên</option>
+                            <% for(const actor of data.actors) {%>
+                                <option value="<%= actor.actorID %>">
+                                    <%= actor.name %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <span class="form-message"></span>
+                        </div>
+        `
+        addActorBtn.addEventListener('click', () => {
+            if ($('#list-actor-movie').children().length >= 1) {
+                $('#list-actor-movie').children().last().after(actorItem);
+                removeActor = document.querySelectorAll('.delete-actor-quantity');
+            } else {
+                $('#list-actor-movie').append(actorItem);
+                removeActor = document.querySelectorAll('.delete-actor-quantity');
+            };
+        })
+    }
+</script>

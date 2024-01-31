@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg position-relative container">
+    <a class="navbar-brand logo" href="/">
+        L O C N G U Y E N
+    </a>
+    <button class="button navbar-toggler z-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse list" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-center align-items-center">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/list-user">List user</a>
+            </li>
+            <% if (data.session.user) {%>
+                <% if (data.session.user.permission.admin) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/add-movie">Add movie</a>
+                    </li>
+                    <% } %>
+                        <% } %>
+                            <li class="nav-item d-flex position-relative user-icon">
+                                <a class="nav-link" href="">
+                                    <% if (data.session.user) {%>
+                                        <%= data.session.user.fname%>
+                                            <%= data.session.user.lname%>
+                                                <% } %>
+                                                    <i class="fa-regular fa-user"></i>
+                                </a>
+                                <ul class="navbar-nav flex-column position-absolute top-100 user-item d-none z-2">
+                                    <% if (data.session.user) {%>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/">Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/logout">Logout</a>
+                                        </li>
+                                        <% } else { %>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/login">Login</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/create-new-user">Register</a>
+                                            </li>
+                                            <% } %>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-link end-0">
+                                <div>
+                                    <form class="fSearch d-flex position-relative">
+                                        <input class="form-control m-0 round-0" type="text" placeholder="Search"
+                                            aria-label="Search">
+                                        <div class="search-btn btn position-absolute end-0 h-100" type="submit"><i
+                                                class="fa fa-search"></i>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+        </ul>
+    </div>
+</nav>

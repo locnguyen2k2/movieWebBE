@@ -1,0 +1,36 @@
+<div class="content container-fluid">
+    <div class="content container-fluid">
+        <div class="trendding" id="trendding">
+            <h3 class="text-white title d-flex p-2 m-1 justify-content-center position-relative">Trendding
+                <span class="position-absolute end-0 text-secondary">
+                    More ...
+                </span>
+            </h3>
+            <div class="cards position-relative row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2">
+                <% if (data.listMovie) {%>
+                    <% for(movie of data.listMovie) {%>
+                        <div class="col round-0 position-relative overflow-hidden">
+                            <div class="card h-100 overflow-hidden">
+                                <div class="poster">
+                                    <img src="/images/<%= movie.poster ? `${movie.poster.path}/${movie.poster.image}.${movie.poster.type}`: `default/empty.png`%>"
+                                        class=" card-img-top" alt="Joker Poster">
+                                </div>
+                                <div class="card-body z-1 text-white info position-absolute bottom-0">
+                                    <h5 class="card-title">
+                                        <%= movie.name %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= movie.description%>
+                                    </p>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-primary">Watch Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% } %>
+            </div>
+        </div>
+    </div>
+</div>

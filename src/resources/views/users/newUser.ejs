@@ -1,0 +1,73 @@
+<div class="content">
+    <form id="<%= data.content %>" class="form" method="post" action="/create-new-user">
+        <div>
+            <h3>
+                <% if (data.title) {%>
+                    <%= data.title %>
+                        <%}%>
+            </h3>
+        </div>
+        <!-- Create an user form with bootstrap -->
+        <div class="form-group">
+            <label for="fname">Họ và tên đệm: </label>
+            <input type="text" class="form-control user-fname" id="fname" name="fname" placeholder="Vd: Nguyễn Tấn">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="lname">Tên: </label>
+            <input type="text" class="form-control user-lname" id="lname" name="lname" placeholder="Vd: Lộc">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label>Giới tính: </label>
+            <label>Nam</label>
+            <input type="radio" class="form-check-input user-gender" id="gender" name="gender" value="male">
+            <label>Nữ</label>
+            <input type="radio" class="form-check-input user-gender" id="gender" name="gender" value="femal">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="birthday">Ngày sinh: </label>
+            <input type="date" class="form-control user-birthday" id="birthday" name="birthday"
+                placeholder="Nhập ngày sinh">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="address">Địa chỉ: </label>
+            <input type="text" class="form-control user-address" id="address" name="address"
+                placeholder="Nhập địa chỉ của bạn">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="email" class="form-control user-email" id="email" name="email" placeholder="Nhập email">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="phone">Số điện thoại: </label>
+            <input type="text" class="form-control user-phone" id="phone" name="phone" placeholder="Nhập số điện thoại">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="username">Tài khoản: </label>
+            <input type="text" class="form-control user-username" name="username" id="username" placeholder="Tài khoản">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu: </label>
+            <input type="text" class="form-control user-password" id="password" name="password" placeholder="Mật khẩu">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="passwordConfirmation">Xác nhận mật khẩu: </label>
+            <input type="text" class="form-control user-passwordCfirmation" name="passwordConfirmation"
+                id="passwordConfirmation" placeholder="Xác nhận mật khẩu">
+            <span class="form-message"></span>
+        </div>
+        <div>
+            <a class="d-flex text-color-secondary">Đã có tài khoản? Đăng nhập
+                <a class="nav-link" href="/login"><u>tại đây</u></a></a>
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+    </form>
+</div>

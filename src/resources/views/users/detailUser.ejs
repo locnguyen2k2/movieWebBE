@@ -1,0 +1,31 @@
+<div class="content">
+    <% if (data.item) {%>
+        <h3>
+            <%= data.title%>
+        </h3>
+        <div>
+            <p><strong>Id:</strong>
+                <%= data.item.id%>
+            </p>
+            <p><strong>Họ và tên:</strong>
+                <%= `${data.item.fname} ${data.item.lname}`%>
+            </p>
+            <p>
+                <strong>Tài khoản:</strong>
+                <%= data.item.username%>
+            </p>
+            <p><strong>Email:</strong>
+                <%= data.item.email%>
+            </p>
+            <p><strong>Địa chỉ:</strong>
+                <%= data.item.address%>
+            </p>
+            <% for (let i=0; i < data.item.permission.length; i++) { %>
+                <p><strong>Quyền hạn <%= i + 1%>:</strong>
+                    <%= data.item.permission[i]%>
+                        <% } %>
+        </div>
+        <% } else {%>
+            <h1>Dữ liệu không tồn tại</h1>
+            <% }%>
+</div>

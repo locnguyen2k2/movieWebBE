@@ -1,0 +1,75 @@
+<div class="content">
+    <h3>
+        <%= data.title %>
+    </h3>
+    <form class="form" id="<%= data.content %>" method="post" action="/update-user"
+        method="POST">
+        <input type="hidden" name="id" value="<%= data.user.id %>">
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input class="form-control user-firstName" id="fname" type="text" name="fname"
+                value="<%= data.user.fname %>">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input class="form-control user-lastName" id="lname" type="text" name="lname"
+                value="<%= data.user.lname %>">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input class="form-control user-gender" id="gender" type="text" name="gender"
+                value="<%= data.user.gender %>">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday</label>
+            <input class="form-control user-birthday" id="birthday" type="text" value="<%= (data.user.birthday) %>">
+            <input class="form-control user-birthday" value="<%= data.user.birthday %>" id="birthday" type="date"
+                name="birthday">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input class="form-control user-address" id="address" type="text" name="address"
+                value="<%= data.user.address %>">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input class="form-control user-phone" id="phone" type="text" name="phone" value="<%= data.user.phone %>">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control user-email" id="email" type="text" name="email" value="<%= data.user.email %>">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <a class="secondary-bg-color d-flex justify-content-center">
+                <%= data.user.username%>
+            </a>
+            <input class="form-control user-username" id="username" type="hidden" name="username"
+                value="<%= data.user.username%>">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label class="d-flex" for="role">
+                Current Role:
+            </label>
+            <div class="d-flex">
+                <% for (const permission of data.permissions) {%>
+                    <a href="/update-permission/<%= permission.id%>"
+                        class="secondary-bg-color d-flex justify-content-center">
+                        <%= permission.roleID%>
+                    </a>
+                    <% } %>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>

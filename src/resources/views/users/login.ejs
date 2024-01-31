@@ -1,0 +1,24 @@
+<div class="content">
+    <h3>
+        <%= data.title %>
+    </h3>
+    <form class="form" id="<%= data.content%>" method="post" action="/login">
+        <div class="spacer"></div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" id="username" type="text" name="username" placeholder="username">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input class="form-control" id="password" type="password" name="password" placeholder="Password">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <span><a class="nav-link" href="/create-new-user">Chưa có tài khoản? Đăng ký <u>tại đây</u></a></span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Đăng nhập</button>
+        </div>
+    </form>
+</div>

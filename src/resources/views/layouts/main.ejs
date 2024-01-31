@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=stylesheet type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/icons/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/../../../bootstrap/css/bootstrap.min.css">
+    <title>My Project</title>
+</head>
+
+<body>
+    <div class="header container-fluid">
+        <%- include('../partials/header')%>
+    </div>
+    <div class="container">
+        <% if (data.sub_content) { %>
+            <%- include('./../'+data.sub_content) %>
+                <% } %>
+    </div>
+    <div class="footer">
+        <%- include('../partials/footer')%>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="/js/scripts.js">
+</script>
+<script>
+    if (`<%= data.content%>` == "login-user-form") {
+        validator({
+            form: "#<%= data.content%>",
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                validator.isRequired('#username'),
+                validator.isRequired('#password'),
+                validator.minLength('#password', 6),
+            ],
+        });
+    }
+    else if (`<%= data.content%>` == "create-user-form") {
+        validator({
+            form: '#<%= data.content%>',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                validator.isRequired('#fname'),
+                validator.isRequired('#lname'),
+                validator.isRequired('#gender'),
+                validator.isRequired('#birthday'),
+                validator.isRequired('#address'),
+                validator.isRequired('#email'),
+                validator.isRequired('#phone'),
+                validator.isRequired('#username'),
+                validator.isRequired('#password'),
+                validator.isRequired('#passwordConfirmation'),
+                validator.minLength('#password', 6),
+                validator.isEmail('#email'),
+                validator.isConfirmed('#passwordConfirmation', function () {
+                    return document.querySelector('#<%= data.content%> #password').value;
+                }, 'Mật khẩu nhập lại không chính xác')
+            ],
+        });
+    } else if (`<%= data.content %>` == "update-user-form") {
+        validator({
+            form: '#<%= data.content%>',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                validator.isRequired('#username'),
+                validator.isRequired('#fname'),
+                validator.isRequired('#lname'),
+                validator.isRequired('#gender'),
+                validator.isRequired('#phone'),
+                validator.isRequired('#email'),
+                validator.isRequired('#address'),
+                validator.isEmail('#email'),
+            ],
+        });
+    }
+    $(document).on('click', '.delete-actor-quantity', function () {
+        $(this).parent().parent().remove();
+    })
+</script>
+<script src="./../../../bootstrap/js/bootstrap.min.js"></script>
+
+</html>

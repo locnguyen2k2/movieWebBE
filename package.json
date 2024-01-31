@@ -1,0 +1,46 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "backend Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "scss": "node-sass --watch src/resources/scss -o src/public/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LocNguyen0711/TH_Nodejs_Nhom2.git"
+  },
+  "author": "2001195_NguyenTanLoc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LocNguyen0711/TH_Nodejs_Nhom2/issues"
+  },
+  "homepage": "https://github.com/LocNguyen0711/TH_Nodejs_Nhom2#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.1",
+    "connect-redis": "^7.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.1",
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.0.1",
+    "react": "^18.2.0",
+    "redis": "^4.6.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.17",
+    "@babel/node": "^7.22.15",
+    "@babel/preset-env": "^7.22.15"
+  }
+}

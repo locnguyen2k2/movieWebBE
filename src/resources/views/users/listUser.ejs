@@ -1,0 +1,82 @@
+<div class="content">
+    <div>
+        <div class="heading">
+            <h3>
+                <%= data.title %>
+            </h3>
+        </div>
+        <% if(data.items[0]) { %>
+            <table class="content" id="<%= data.content %>">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <% for (let i=0; i<data.cols.length; i++) {%>
+                            <th>
+                                <%= data.cols[i] %>
+                            </th>
+                            <% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i<data.items.length; i++) { %>
+                        <tr id="<%= data.content %>-<%= data.items[i].id%>" class="<%= ((i)%5 == 0) ? 'begin': 'end'%>">
+                            <td>
+                                <%= (5* data.page) - 4 + i %>
+                            </td>
+                            <% for(let j=0; j < data.attrs.length; j++) {%>
+                                <td>
+                                    <%= data.items[i][data.attrs[j]] %>
+                                </td>
+                                <% } %>
+                                    <td class="d-flex justify-content-between">
+                                        <a class="view-user-item"
+                                            href="/detail-user?username=<%= data.items[i].username%>"
+                                            user-id="<%= data.items[i].id %>">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a class="update-user-item" href="/update-user/<%= data.items[i].username%>"
+                                            user-id="<%= data.items[i].id %>">
+                                            <i class="fas fa-pencil-ruler"></i>
+                                        </a>
+                                        <a class="delete-user-item" href="/delete-user/<%= data.items[i].username %>"
+                                            user-id="<%= data.items[i].id %>">
+                                            <% if (data.items[i].status==0) { %>
+                                                <i class="fas fa-trash"></i>
+                                                <% } else { %>
+                                                    <i class="fas fa-trash-restore"></i>
+                                                    <% } %>
+                                        </a>
+                                    </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link"
+                                href="/list-user?page=<%= data.page  > 1 ? data.page - 1 : data.total / 5 + 1 %>">
+                                Previous
+                            </a>
+                        </li>
+                        <% for (let i=0; i < data.total / 5; i++) { %>
+                            <li class="page-item">
+                                <a class="page-link <%= i+1 == data.page ? 'active' : '' %>"
+                                    href="/list-user?page=<%= i+1 %>">
+                                    <%= i + 1 %>
+                                </a>
+                            </li>
+                            <% } %>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                        href="/list-user?page=<%= data.page < (data.total / 5) ? data.page + 1 : 1 %>">
+                                        Next
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </div>
+            <% } %>
+    </div>
+</div>
